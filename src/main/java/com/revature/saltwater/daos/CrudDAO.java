@@ -11,5 +11,5 @@ public interface CrudDAO<T> {
     void delete(String id);
     T getById(String id);
     List<T> getAll();
-    List<String> getAllUsernames();
+
 }

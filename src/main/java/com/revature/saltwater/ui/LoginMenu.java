@@ -1,6 +1,12 @@
 package com.revature.saltwater.ui;
 
+import com.revature.saltwater.daos.OrderDAO;
+import com.revature.saltwater.daos.ProductDAO;
+import com.revature.saltwater.daos.UserDAO;
+import com.revature.saltwater.models.Product;
 import com.revature.saltwater.models.User;
+import com.revature.saltwater.services.OrderServices;
+import com.revature.saltwater.services.ProductServices;
 import com.revature.saltwater.services.UserServices;
 import com.revature.saltwater.utils.customexceptions.InvalidUserExceptions;
 
@@ -26,7 +32,6 @@ public class LoginMenu implements IMenu {
                 System.out.println("\nWelcome to SaltWater!");
                 System.out.println("[1] Login");
                 System.out.println("[2] Sign Up");
-                System.out.println("[3] Funny Quote");
                 System.out.println("[x] Exit");
 
                 System.out.println("\nEnter: ");
@@ -40,8 +45,6 @@ public class LoginMenu implements IMenu {
                         User user = signUp();
                         userServices.register(user);
                         System.out.println("Successfully created account!");
-                        break;
-                    case "3":
                         break;
                     case "x":
                         System.out.println("See ya!");
@@ -168,7 +171,7 @@ public class LoginMenu implements IMenu {
 
                 try {
                     User user = userServices.login(username, password);
-                    new MainMenu(user).start();
+                    new MainMenu(user, new UserServices(new UserDAO()), new ProductServices(new ProductDAO()), new OrderServices(new OrderDAO())).start();
                     break exit;
                 } catch (InvalidUserExceptions e) {
                     System.out.println(e.getMessage());

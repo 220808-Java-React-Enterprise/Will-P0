@@ -62,10 +62,7 @@ public class UserDAO implements CrudDAO<User> {
         return null;
     }
 
-    @Override
-    public List<String> getAllUsernames() {
-        return null;
-    }
+
 
     public User getUserByUsernameAndPassword(String username, String password) {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
