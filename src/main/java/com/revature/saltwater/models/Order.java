@@ -39,4 +39,13 @@ public class Order {
     public void setProduct_id(String product_id) {
         this.product_id = product_id;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id='" + id + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", product_id='" + product_id + '\'' +
+                '}';
+    }
 }

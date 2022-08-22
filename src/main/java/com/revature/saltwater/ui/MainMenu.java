@@ -57,6 +57,7 @@ public class MainMenu implements IMenu {
                         break;
                     case "3":
                         placeOrder(cartIDs, user.getId());
+                        break;
                     case "4":
                         viewOrders(user.getId());
                     case "x":
