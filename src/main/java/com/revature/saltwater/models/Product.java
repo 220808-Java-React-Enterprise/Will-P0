@@ -7,17 +7,21 @@ public class Product {
     private String type;
     private String brand;
     private String price;
+    private String quantity;
+    private String warehouse_id;
 
     public Product() {
 
     }
 
-    public Product(String id, String name, String type, String brand, String price) {
+    public Product(String id, String name, String type, String brand, String price, String quantity, String warehouse_id) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.brand = brand;
         this.price = price;
+        this.quantity = quantity;
+        this.warehouse_id = warehouse_id;
     }
 
     public String getId() {
@@ -60,6 +64,22 @@ public class Product {
         this.price = price;
     }
 
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getWarehouse_id() {
+        return warehouse_id;
+    }
+
+    public void setWarehouse_id(String warehouse_id) {
+        this.warehouse_id = warehouse_id;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -68,6 +88,8 @@ public class Product {
                 ", type='" + type + '\'' +
                 ", brand='" + brand + '\'' +
                 ", price='" + price + '\'' +
+                ", quantity='" + quantity + '\'' +
+                ", warehouse_id='" + warehouse_id + '\'' +
                 '}';
     }
 }

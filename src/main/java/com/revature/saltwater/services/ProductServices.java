@@ -12,7 +12,29 @@ public class ProductServices {
         this.productDAO = productDAO;
     }
 
+    public Product getProduct(String id) {
+        return productDAO.getById(id);
+    }
+
+    public void subtractQuantity(Product obj) {
+        productDAO.subtractQuantity(obj);
+    }
+
+    public void addQuantity(Product obj) {
+        productDAO.addQuantity(obj);
+    }
+
+    public List<Product> getByWhID(String id) {
+        return productDAO.getByWhID(id);
+    }
+
+    public void replenishQuantity(Product obj) {
+        productDAO.replenishQuantity(obj);
+    }
+
     public List<Product> getAllProducts() {
         return productDAO.getAll();
     }
+
+
 }

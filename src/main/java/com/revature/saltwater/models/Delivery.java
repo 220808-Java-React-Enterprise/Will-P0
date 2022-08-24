@@ -1,20 +1,15 @@
 package com.revature.saltwater.models;
 
-public class Order {
-
+public class Delivery {
     private String id;
     private String date;
-    private String user_id;
+    private String seller_id;
     private String product_id;
 
-    private Order() {
-
-    }
-
-    public Order(String id, String date, String user_id, String product_id) {
+    public Delivery(String id, String date, String seller_id, String product_id) {
         this.id = id;
         this.date = date;
-        this.user_id = user_id;
+        this.seller_id = seller_id;
         this.product_id = product_id;
     }
 
@@ -34,12 +29,12 @@ public class Order {
         this.date = date;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getSeller_id() {
+        return seller_id;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setSeller_id(String seller_id) {
+        this.seller_id = seller_id;
     }
 
     public String getProduct_id() {
@@ -52,10 +47,10 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "Delivery{" +
                 "id='" + id + '\'' +
                 ", date='" + date + '\'' +
-                ", user_id='" + user_id + '\'' +
+                ", seller_id='" + seller_id + '\'' +
                 ", product_id='" + product_id + '\'' +
                 '}';
     }

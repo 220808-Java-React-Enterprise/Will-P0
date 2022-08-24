@@ -2,6 +2,7 @@ package com.revature.saltwater.daos;
 
 import com.revature.saltwater.models.Order;
 import com.revature.saltwater.models.Product;
+import com.revature.saltwater.models.User;
 import com.revature.saltwater.utils.customexceptions.InvalidSQLException;
 import com.revature.saltwater.utils.database.ConnectionFactory;
 
@@ -18,10 +19,11 @@ public class OrderDAO implements CrudDAO<Order> {
     @Override
     public void save(Order obj) {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO orders (id, user_id, product_id) VALUES (?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO orders (id, date, user_id, product_id) VALUES (?, ?, ?, ?)");
             ps.setString(1, obj.getId());
-            ps.setString(2, obj.getUser_id());
-            ps.setString(3, obj.getProduct_id());
+            ps.setString(2, obj.getDate());
+            ps.setString(3, obj.getUser_id());
+            ps.setString(4, obj.getProduct_id());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new InvalidSQLException("An error occurred when tyring to save to the database.");
@@ -45,8 +47,24 @@ public class OrderDAO implements CrudDAO<Order> {
 
     @Override
     public List<Order> getAll() {
-        return null;
+        List<Order> orders = new ArrayList<>();
+
+        try (Connection con = ConnectionFactory.getInstance().getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM orders");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Order order = new Order(rs.getString("id"), rs.getString("date"), rs.getString("user_id"), rs.getString("product_id"));
+                orders.add(order);
+            }
+        } catch (SQLException e) {
+            throw new InvalidSQLException("An error occurred when tyring to save to the database.");
+        }
+
+        return orders;
     }
+
+
 
 
     public List<Order> getAllOrders(String user_id) {
@@ -58,7 +76,7 @@ public class OrderDAO implements CrudDAO<Order> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Order order = new Order(rs.getString("id"), rs.getString("user_id"), rs.getString("product_id"));
+                Order order = new Order(rs.getString("id"), rs.getString("date"), rs.getString("user_id"), rs.getString("product_id"));
                 orders.add(order);
             }
         } catch (SQLException e) {

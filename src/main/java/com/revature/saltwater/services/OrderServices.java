@@ -18,6 +18,10 @@ public class OrderServices {
         orderDAO.save(order);
     }
 
+    public List<Order> getAll() {
+        return orderDAO.getAll();
+    }
+
     public List<Order> getAllOrders(String userID) {
         return orderDAO.getAllOrders(userID);
     }

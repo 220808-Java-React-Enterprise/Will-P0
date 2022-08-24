@@ -1,16 +1,15 @@
 package com.revature.saltwater.models;
 
-public class User {
-
+public class Seller {
     private String id;
     private String username;
     private String password;
 
-    public User() {
+    public Seller() {
 
     }
 
-    public User(String id, String username, String password) {
+    public Seller(String id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -40,10 +39,9 @@ public class User {
         this.password = password;
     }
 
-
     @Override
     public String toString() {
-        return "User{" +
+        return "Seller{" +
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
