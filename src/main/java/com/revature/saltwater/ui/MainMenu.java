@@ -57,7 +57,9 @@ public class MainMenu implements IMenu {
                         break;
                     case "2":
                         System.out.println("\nHere are your selected items for a total of $" + cartTotal + ".");
-                        System.out.println(cart);
+                        for (Product i : cart) {
+                            System.out.println(i.getName());
+                        }
                         break;
                     case "3":
                         placeOrder(cartIDs, user.getId());
@@ -150,6 +152,9 @@ public class MainMenu implements IMenu {
                             case "x": {
                                 break exitSelect;
                             }
+                            default:
+                                System.out.println("Invalid input!");
+                                break;
                         }
                     }
                 }

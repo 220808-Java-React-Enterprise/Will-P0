@@ -221,7 +221,7 @@ public class LoginMenu implements IMenu {
 
                 try {
                     Seller seller = sellerServices.login(username, password);
-                    new SellerMenu(seller, new SellerServices(new SellerDAO()), new ProductServices(new ProductDAO()), new DeliveryServices(new DeliveryDAO())).start();
+                    new SellerMenu(seller, new SellerServices(new SellerDAO()), new ProductServices(new ProductDAO()), new DeliveryServices(new DeliveryDAO()), new WarehouseServices(new WarehouseDAO())).start();
                     break exit;
                 } catch (InvalidUserExceptions e) {
                     System.out.println(e.getMessage());

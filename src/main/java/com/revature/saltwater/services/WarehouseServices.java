@@ -13,6 +13,10 @@ public class WarehouseServices {
         this.warehouseDAO = warehouseDAO;
     }
 
+    public Warehouse getByID(String id) {
+        return warehouseDAO.getById(id);
+    }
+
 
     public List<Warehouse> getAllWarehouses() {
         return warehouseDAO.getAll();

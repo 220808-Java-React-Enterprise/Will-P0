@@ -1,5 +1,7 @@
 package com.revature.saltwater.models;
 
+import com.revature.saltwater.services.WarehouseServices;
+
 public class Warehouse {
     private String id;
     private String name;
@@ -20,6 +22,7 @@ public class Warehouse {
     public String getId() {
         return id;
     }
+
 
     public void setId(String id) {
         this.id = id;

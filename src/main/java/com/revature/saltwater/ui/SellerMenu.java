@@ -12,12 +12,14 @@ public class SellerMenu implements IMenu {
     private final SellerServices sellerServices;
     private final ProductServices productServices;
     private final DeliveryServices deliveryServices;
+    private final WarehouseServices warehouseServices;
 
-    public SellerMenu(Seller seller, SellerServices sellerServices, ProductServices productServices, DeliveryServices deliveryServices) {
+    public SellerMenu(Seller seller, SellerServices sellerServices, ProductServices productServices, DeliveryServices deliveryServices, WarehouseServices warehouseServices) {
         this.seller = seller;
         this.sellerServices = sellerServices;
         this.productServices = productServices;
         this.deliveryServices = deliveryServices;
+        this.warehouseServices = warehouseServices;
     }
 
     @Override
@@ -91,7 +93,9 @@ public class SellerMenu implements IMenu {
                         String select = scan.nextLine();
                         switch (select) {
                             case "y": {
-                                System.out.println("\nThank you for selling this item to us! Please send the package to: and we will pay you once it arrives.");
+                                String whID = item.getWarehouse_id();
+                                Warehouse wh = warehouseServices.getByID(whID);
+                                System.out.println("\nThank you for selling this item to us! Please send the package to: " + wh.getStreet() + ", " + wh.getCity() + ", " + wh.getState() + ", " + wh.getZip()+ " and we will pay you once it arrives.");
                                 deliverItem(item.getId(), sellerID);
                                 productServices.addQuantity(item);
                                 return;
@@ -99,6 +103,9 @@ public class SellerMenu implements IMenu {
                             case "x": {
                                 break exitSelect;
                             }
+                            default:
+                                System.out.println("Invalid input!");
+                                break;
                         }
                     }
                 }
